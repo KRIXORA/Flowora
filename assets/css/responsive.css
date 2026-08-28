@@ -1,0 +1,477 @@
+/* =========================================================
+   Flowora — Advanced responsive system
+   Breakpoints: 1400 / 1200 / 1024 / 768 / 480 / 360
+   Uses .mobile-open on #appSidebar (synced with app.js)
+   ========================================================= */
+
+/* Base fluid helpers */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Sidebar backdrop (mobile/tablet) */
+.sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 95;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+.sidebar-backdrop.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+    .app-header {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+    }
+    .content-viewport {
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    .scroll-top-fab {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+    }
+    .app-sidebar {
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+}
+
+/* ---------- Large desktop polish ---------- */
+@media (min-width: 1400px) {
+    .content-viewport {
+        max-width: 1320px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* ---------- Laptop (≤1200px) ---------- */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        gap: 18px;
+    }
+    .app-header {
+        padding: 0 20px;
+    }
+    .content-viewport {
+        padding: 20px;
+    }
+    .how-to-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ---------- Tablet & small laptop (≤1024px) ---------- */
+@media (max-width: 1024px) {
+    .app-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(300px, 86vw);
+        transform: translateX(-105%);
+        transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 100;
+        box-shadow: none;
+    }
+    .app-sidebar.mobile-open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-xl);
+    }
+    .app-main {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+    .mobile-menu-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .sidebar-toggle {
+        display: inline-flex;
+    }
+
+    .span-col-8,
+    .span-col-4,
+    .span-col-12 {
+        grid-column: span 12;
+    }
+
+    .welcome-hero-card {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .hero-content {
+        max-width: 100%;
+        flex: 1 1 280px;
+    }
+    .hero-graphic {
+        margin-left: auto;
+    }
+
+    /* Planner: 1 col on tablet */
+    .planner-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .how-to-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ---------- Phones & large phones (≤768px) ---------- */
+@media (max-width: 768px) {
+    .app-header {
+        height: auto;
+        min-height: 64px;
+        padding: 10px 14px;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    .header-left {
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+    .header-title-wrapper h1,
+    #pageTitle {
+        font-size: 1.05rem !important;
+    }
+    .date-subtitle {
+        font-size: 0.75rem;
+    }
+    .header-right {
+        gap: 6px !important;
+        flex-shrink: 0;
+    }
+    .content-viewport {
+        padding: 14px 12px 28px;
+    }
+
+    .dashboard-grid {
+        gap: 14px;
+    }
+    .welcome-hero-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 18px !important;
+    }
+    .hero-graphic {
+        align-self: center;
+        margin-left: 0;
+    }
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .hero-actions .btn {
+        flex: 1 1 auto;
+        min-width: 120px;
+    }
+
+    .glass-card {
+        padding: 16px !important;
+        border-radius: var(--radius-md);
+    }
+
+    .widget-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .quick-add-task {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 8px;
+    }
+    .quick-add-task input {
+        width: 100%;
+    }
+    .quick-add-task .btn {
+        width: 100%;
+    }
+
+    /* Calendar denser but tappable */
+    .calendar-placeholder-grid {
+        gap: 5px;
+    }
+    .calendar-cell-item {
+        min-height: 56px !important;
+        padding: 6px !important;
+        font-size: 0.78rem;
+    }
+
+    .view-header-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .view-header-actions .btn {
+        width: 100%;
+    }
+
+    #notificationDropdown {
+        position: fixed !important;
+        top: 64px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    .modal-container,
+    .modal-overlay > .glass-card {
+        margin: 12px;
+        max-width: calc(100vw - 24px) !important;
+        width: 100% !important;
+    }
+
+    .toast-container {
+        left: 12px;
+        right: 12px;
+        bottom: max(12px, env(safe-area-inset-bottom));
+    }
+    .toast {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Settings cards full width */
+    .settings-card {
+        width: 100% !important;
+    }
+
+    /* Touch-friendly controls */
+    .nav-item {
+        min-height: 44px;
+        padding: 12px 14px;
+    }
+    .btn {
+        min-height: 42px;
+    }
+    .icon-btn,
+    .theme-toggle-btn,
+    #themeToggleBtn,
+    #notificationBtn,
+    #mobileMenuBtn {
+        min-width: 42px;
+        min-height: 42px;
+    }
+
+    .scroll-top-fab {
+        width: 46px;
+        height: 46px;
+        right: 14px;
+        bottom: 14px;
+    }
+
+    .how-to-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Hide less-critical header chrome on phone */
+    #aiQuickPromptBtn span {
+        display: none;
+    }
+}
+
+/* ---------- Small phones (≤480px) ---------- */
+@media (max-width: 480px) {
+    .app-sidebar {
+        width: min(92vw, 300px);
+    }
+    .header-title-wrapper .date-subtitle {
+        display: none;
+    }
+    .header-title-wrapper h1,
+    #pageTitle {
+        font-size: 0.98rem !important;
+    }
+    .content-viewport {
+        padding: 12px 10px 24px;
+    }
+    .hero-actions {
+        flex-direction: column;
+    }
+    .hero-actions .btn {
+        width: 100%;
+    }
+    .progress-ring-container {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    .progress-ring {
+        width: 120px;
+        height: 120px;
+    }
+    .stat-value {
+        font-size: 1.5rem !important;
+    }
+    .calendar-cell-item {
+        min-height: 48px !important;
+        font-size: 0.7rem;
+        padding: 4px !important;
+    }
+    .nav-group-label {
+        padding-left: 12px;
+    }
+    .brand-logo span {
+        font-size: 1.05rem;
+    }
+}
+
+/* ---------- Very small (≤360px) ---------- */
+@media (max-width: 360px) {
+    .app-header {
+        padding: 8px 8px;
+    }
+    .icon-btn,
+    .theme-toggle-btn {
+        min-width: 38px;
+        min-height: 38px;
+        width: 38px;
+        height: 38px;
+    }
+    .glass-card {
+        padding: 14px !important;
+    }
+}
+
+/* ---------- Landscape phones ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .app-sidebar {
+        overflow-y: auto;
+    }
+    .welcome-hero-card {
+        flex-direction: row;
+        align-items: center;
+    }
+    .content-viewport {
+        padding-top: 10px;
+    }
+    .app-header {
+        min-height: 52px;
+        height: auto;
+    }
+}
+
+/* ---------- Hover only on fine pointers (no sticky hover on touch) ---------- */
+@media (hover: hover) and (pointer: fine) {
+    .nav-item:hover {
+        transform: translateX(4px);
+    }
+}
+@media (hover: none) {
+    .glass-card:hover {
+        transform: none;
+    }
+    .nav-item:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Reduced motion already in animations.css ---------- */
+
+/* Print (optional clean) */
+@media print {
+    .app-sidebar,
+    .app-header,
+    .scroll-top-fab,
+    .sidebar-backdrop {
+        display: none !important;
+    }
+    .app-main {
+        margin: 0 !important;
+    }
+}
+
+/* ===== UX arrange polish ===== */
+@media (min-width: 1025px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar-toggle {
+        /* close icon on mobile drawer */
+        display: inline-flex !important;
+    }
+    .app-header {
+        position: sticky;
+        top: 0;
+        z-index: 90;
+    }
+}
+
+/* Reduce header clutter on small screens */
+@media (max-width: 600px) {
+    #shortcutsHelpBtn {
+        display: none !important;
+    }
+    .header-right {
+        gap: 4px !important;
+    }
+}
+
+/* Dashboard: primary work area first */
+#view-dashboard .widget-card {
+    order: 0;
+}
+#view-dashboard .how-to-use-card {
+    order: 2;
+}
+#view-dashboard .dashboard-grid {
+    display: grid;
+}
+
+/* Stat card less dominant on phone */
+@media (max-width: 768px) {
+    .welcome-hero-card.span-col-8,
+    .stat-card.span-col-4 {
+        grid-column: span 12;
+    }
+    .hero-actions .btn {
+        flex: 1 1 calc(50% - 8px);
+        justify-content: center;
+    }
+    .hero-actions .btn:last-child {
+        flex: 1 1 100%;
+    }
+}
+
+/* Quick add selects stack cleanly */
+@media (max-width: 640px) {
+    .quick-add-task select {
+        flex: 1 1 calc(50% - 8px);
+        max-width: none;
+    }
+    .quick-add-task .btn {
+        width: 100%;
+    }
+}

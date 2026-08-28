@@ -1,0 +1,47 @@
+/* Motion — no hidden-until-scroll (mobile blur bug fix) */
+@keyframes fadeInUp {
+    from { opacity: 0.6; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0.85; }
+    to { opacity: 1; }
+}
+@keyframes scaleIn {
+    from { opacity: 0.9; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInLeft {
+    from { opacity: 0.9; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+@keyframes ripple {
+    to { transform: scale(2.4); opacity: 0; }
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* NEVER hide content — was causing blurred/blank screens on mobile */
+.reveal,
+.reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.view-section.active {
+    animation: fadeIn 0.2s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,32 @@
+/* Premium typography scale */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+h1 { font-size: clamp(1.75rem, 2.5vw, 2.15rem); }
+h2 { font-size: clamp(1.35rem, 2vw, 1.6rem); }
+h3 { font-size: 1.1rem; font-weight: 600; }
+
+#pageTitle {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 160%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.date-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.brand-logo span, .brand-logo {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.03em;
+}

@@ -1,0 +1,376 @@
+/* Layout Architecture */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Sidebar */
+.app-sidebar {
+    will-change: transform;
+
+    width: 260px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-glass);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 16px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    transition: transform var(--transition-normal), width var(--transition-normal);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding-left: 8px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.brand-logo i {
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.sidebar-toggle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.sidebar-footer {
+    border-top: 1px solid var(--border-glass);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background-color: var(--bg-main);
+    border-radius: var(--radius-md);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.user-status {
+    font-size: 0.75rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Main Area */
+.app-main {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left var(--transition-normal);
+}
+
+.app-header {
+    height: 76px;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    backdrop-filter: blur(12px);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* Header Title Fixes */
+.header-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.header-title-wrapper h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header-title-wrapper .date-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobile-menu-btn {
+    display: none; /* Desktop par hide rahega */
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn, .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    position: relative;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.icon-btn:hover, .theme-toggle-btn:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger);
+    border-radius: var(--radius-full);
+}
+
+.content-viewport {
+    padding: 32px;
+    flex: 1;
+}
+
+.view-section {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.view-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   Sidebar/tablet responsive rules live in
+   responsive.css (single source of truth) to
+   avoid conflicting breakpoints/class names.
+   ========================================== */
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 0 16px;
+        height: 64px;
+    }
+    
+    .header-title-wrapper h1 {
+        font-size: 1.05rem;
+    }
+    
+    .header-title-wrapper .date-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .content-viewport {
+        padding: 16px;
+    }
+    
+    .header-right {
+        gap: 8px;
+    }
+    
+    .icon-btn, .theme-toggle-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Grouped sidebar navigation */
+.nav-group-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 14px 14px 6px;
+    margin-top: 4px;
+    user-select: none;
+}
+.nav-group-label:first-child {
+    margin-top: 0;
+    padding-top: 4px;
+}
+.sidebar-nav {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 2px;
+}
+.sidebar-nav .nav-item span {
+    white-space: nowrap;
+}
+.user-status i {
+    font-size: 0.55rem;
+    color: var(--success);
+    margin-right: 4px;
+}
+
+
+/* Built by KRIXORA */
+.built-by-krixora {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+.built-by-krixora:hover {
+    background: var(--bg-main);
+    border-color: var(--border-glass);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+.krixora-mark {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 4px;
+}
+.built-by-text {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.built-by-text strong {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+}
+.krixora-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+}
+.app-sidebar.collapsed .built-by-text,
+.app-sidebar:not(.mobile-open) .built-by-text {
+    /* keep text visible on desktop expanded; collapsed sidebar may hide spans via existing rules */
+}
