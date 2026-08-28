@@ -1,0 +1,13 @@
+{
+  "appId": "app.lifeflow.ai",
+  "appName": "Flowora",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500
+    }
+  }
+}

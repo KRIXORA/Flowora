@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <title>Flowora - Productivity & Life Planner</title>
+    
+    <meta name="description" content="Flowora — free installable productivity app to plan tasks, build habits, track goals, run focus timers, and stay organized. Works offline as a PWA.">
+    
+    <meta name="keywords" content="Flowora, productivity app, habit tracker, goal tracker, pomodoro timer, task planner, life planner, PWA, offline productivity">
+    
+    <meta name="author" content="KRIXORA">
+    
+    <meta name="creator" content="KRIXORA">
+    
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    
+    
+    <!-- Theme -->
+    <meta name="theme-color" content="#2B4592">
+    
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json?v=11">
+    
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+    
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/variables.css?v=11">
+    <link rel="stylesheet" href="assets/css/global.css?v=11">
+    <link rel="stylesheet" href="assets/css/typography.css?v=11">
+    <link rel="stylesheet" href="assets/css/layout.css?v=11">
+    <link rel="stylesheet" href="assets/css/components.css?v=11">
+    <link rel="stylesheet" href="assets/css/glassmorphism.css?v=11">
+    <link rel="stylesheet" href="assets/css/animations.css?v=11">
+    <link rel="stylesheet" href="assets/css/dashboard.css?v=11">
+    <link rel="stylesheet" href="assets/css/planner.css?v=11">
+    <link rel="stylesheet" href="assets/css/calendar.css?v=11">
+    <link rel="stylesheet" href="assets/css/settings.css?v=11">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=11">
+    <link rel="stylesheet" href="assets/css/premium.css?v=11">
+    
+    
+    <!-- Open Graph (Social Preview) — 1200×630 -->
+    <meta property="og:site_name" content="Flowora">
+    <meta property="og:title" content="Flowora — AI Productivity & Life Planner">
+    <meta property="og:description" content="Organize tasks, build habits, track goals, and stay productive with an installable AI-powered life planner.">
+    <meta property="og:image" content="https://flowora-ai.vercel.app/assets/images/preview.webp">
+    <meta property="og:image:secure_url" content="https://flowora-ai.vercel.app/assets/images/preview.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Flowora — AI Productivity and Life Planner">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowora-ai.vercel.app/">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flowora — AI Productivity & Life Planner">
+    <meta name="twitter:description" content="Organize tasks, build habits, track goals, and stay productive with an installable AI life planner.">
+    
+    <meta name="twitter:image" content="https://flowora-ai.vercel.app/assets/images/preview.webp">
+    
+    
+    <!-- App Icons -->
+    <link rel="icon" href="assets/icons/favicon.ico?v=11">
+    
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://flowora-ai.vercel.app/">
+    
+    
+    <!-- Project Identity -->
+    <meta name="application-name" content="Flowora">
+    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Flowora",
+      "alternateName": "Flowora Productivity & Life Planner",
+      "url": "https://flowora-ai.vercel.app/",
+      "description": "Installable productivity and life planner for tasks, habits, goals, focus timers, and analytics. Works offline as a Progressive Web App.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Modern browser recommended.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Task planner",
+        "Habit tracker",
+        "Goal tracking",
+        "Pomodoro focus timer",
+        "Daily and weekly review",
+        "AI coach assistant",
+        "Offline PWA install"
+      ],
+      "screenshot": "https://flowora-ai.vercel.app/assets/images/preview.webp",
+      "image": "https://flowora-ai.vercel.app/assets/images/preview.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "KRIXORA"
+      }
+    }
+    </script>
+
+</head>
+
+<body>
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar" id="appSidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-header">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>
+                    <span>Flowora</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+            </div>
+                         
+            <nav class="sidebar-nav" aria-label="Main Navigation">
+                <div class="nav-group-label">Home</div>
+                <a href="#dashboard" class="nav-item active" data-target="dashboard" aria-current="page">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                    <span>Home</span>
+                </a>
+
+                <div class="nav-group-label">Plan</div>
+                <a href="#planner" class="nav-item" data-target="planner">
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                    <span>Planner</span>
+                </a>
+                <a href="#calendar" class="nav-item" data-target="calendar">
+                    <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                    <span>Calendar</span>
+                </a>
+
+                <div class="nav-group-label">Focus</div>
+                <a href="#pomodoro" class="nav-item" data-target="pomodoro">
+                    <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                    <span>Focus Timer</span>
+                </a>
+                <a href="#ai-hub" class="nav-item" data-target="ai-hub">
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <span>AI Coach</span>
+                </a>
+
+                <div class="nav-group-label">Grow</div>
+                <a href="#goals" class="nav-item" data-target="goals">
+                    <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                    <span>Goals</span>
+                </a>
+                <a href="#habits" class="nav-item" data-target="habits">
+                    <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                    <span>Habits</span>
+                </a>
+                <a href="#review" class="nav-item" data-target="review">
+                    <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                    <span>Review</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-target="analytics">
+                    <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                    <span>Progress</span>
+                </a>
+            </nav>
+                         
+            <div class="sidebar-footer">
+                <div class="user-profile-card" title="Change your name in Settings">
+                    <div class="user-avatar" aria-hidden="true">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h4 class="user-name">Guest User</h4>
+                        <span class="user-status"><i class="fa-solid fa-circle" aria-hidden="true"></i> Online</span>
+                    </div>
+                </div>
+                <a href="#settings" class="nav-item settings-link" data-target="settings">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span>Settings</span>
+                </a>
+                <a class="built-by-krixora" href="https://krixora-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" title="Open KRIXORA portfolio">
+                    <span class="built-by-text">Built by</span>
+                    <img src="assets/brand/krixora-mark.svg" alt="" width="22" height="22" class="krixora-mark" />
+                    <strong class="krixora-name">KRIXORA</strong>
+                </a>
+            </div>
+        </aside>
+                 
+        <!-- Main Content Wrapper -->
+        <main class="app-main">
+            <!-- Header Bar -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="appSidebar">
+                        <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
+                    </button>
+                    <div class="header-title-wrapper">
+                        <h1 id="pageTitle">Home</h1>
+                        <p id="currentDateDisplay" class="date-subtitle">Today</p>
+                    </div>
+                </div>
+                                 
+                <div class="header-right">
+                    <button class="icon-btn ai-sparkle-btn" id="aiQuickPromptBtn" title="AI Coach" onclick="router.navigateTo('ai-hub')" aria-label="AI Coach">
+                        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    </button>
+                                         
+                    <!-- Notification Button with Dropdown Container -->
+                    <div style="position: relative;">
+                        <button class="icon-btn notification-btn" id="notificationBtn" title="Notifications" aria-label="Notifications" aria-expanded="false" aria-controls="notificationDropdown">
+                            <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                            <span class="notification-badge" id="notificationBadge" style="display: none;"></span>
+                        </button>
+                                                 
+                        <!-- Notification Dropdown Panel -->
+                        <div id="notificationDropdown" class="glass-card" style="display: none; position: absolute; right: 0; top: 50px; width: 320px; z-index: 1000; padding: 16px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-glass); background: var(--bg-surface);" aria-hidden="true">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-glass); padding-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 0;">Notifications</h4>
+                                    <span class="badge soft-badge" id="notificationCountBadge" style="font-size: 0.7rem;"></span>
+                                </div>
+                                <button id="clearNotificationsBtn" style="background: none; border: none; font-size: 0.75rem; color: var(--text-secondary); cursor: pointer; padding: 2px 6px; border-radius: var(--radius-sm); transition: background 0.2s;" onmouseover="this.style.background='var(--bg-main)'" onmouseout="this.style.background='transparent'">Clear All</button>
+                            </div>
+                            <div id="notificationList" style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto;">
+                                <div style="padding: 16px; text-align: center; font-size: 0.85rem; color: var(--text-secondary);">No new notifications</div>
+                            </div>
+                        </div>
+                    </div>
+                                         
+                    <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-sun" id="themeIcon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </header>
+                         
+            <!-- Dynamic Content Views -->
+            <div class="content-viewport">
+                <!-- Dashboard View -->
+                <section id="view-dashboard" class="view-section active" aria-labelledby="pageTitle">
+                    <div class="dashboard-grid">
+                        <div class="glass-card welcome-hero-card span-col-8">
+                            <div class="hero-content">
+                                <span class="badge soft-badge"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</span>
+                                <h2>Good day. Your focus score is <span class="highlight-gradient">--%</span>.</h2>
+                                <p>Add tasks below, start a focus session, or apply a day template. Everything else is in the left menu.</p>
+                                <div class="hero-actions">
+                                    <button class="btn btn-primary" onclick="router.navigateTo('pomodoro')"><i class="fa-solid fa-play" aria-hidden="true"></i> Focus</button>
+                                    <button class="btn btn-secondary" type="button" id="openTemplatesBtn"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Templates</button>
+                                    <button class="btn btn-secondary" type="button" id="openHowToUseBtn"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> Guide</button>
+                                </div>
+                            </div>
+                            <div class="hero-graphic">
+                                <div class="progress-ring-container">
+                                    <svg class="progress-ring" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+                                        <circle class="ring-bg" cx="60" cy="60" r="52" fill="none"></circle>
+                                        <circle class="ring-fill" cx="60" cy="60" r="52" fill="none"
+                                            stroke-dasharray="326.73"
+                                            stroke-dashoffset="326.73"></circle>
+                                    </svg>
+                                    <div class="ring-text">
+                                        <span class="percentage">0%</span>
+                                        <span class="label">Focus</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card stat-card span-col-4">
+                            <div class="stat-header">
+                                <span class="stat-title">Focus Time Today</span>
+                                <div class="stat-icon blue" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></div>
+                            </div>
+                            <div class="stat-body">
+                                <h3 class="stat-value" id="dashFocusTime">0h 0m</h3>
+                                <span class="stat-trend positive"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> From focus sessions</span>
+                            </div>
+                            <div class="mini-progress-bar">
+                                <div class="fill" id="dashFocusBar" style="width: 10%;"></div>
+                            </div>
+                        </div>
+
+                                                <div class="glass-card span-col-8 widget-card">
+                            <div class="widget-header">
+                                <h3><i class="fa-solid fa-list-check" aria-hidden="true"></i> Today’s tasks</h3>
+                                <button class="text-btn" onclick="router.navigateTo('planner')">Open planner <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="task-list-container" id="dashboardTaskList"></div>
+                            <div class="quick-add-task">
+                                <input type="text" id="quickTaskInput" placeholder="What do you need to do? Press Enter to add…" aria-label="Quick Task Input">
+                                <select id="quickTaskTag" aria-label="Tag" title="Tag">
+                                    <option value="Personal">Personal</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Study">Study</option>
+                                    <option value="Planning">Planning</option>
+                                    <option value="Errands">Errands</option>
+                                </select>
+                                <select id="quickTaskPriority" aria-label="Priority" title="Priority">
+                                    <option value="High">High</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                                <select id="quickTaskRecurrence" aria-label="Repeat" title="Repeat">
+                                    <option value="none">Once</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekdays">Weekdays</option>
+                                    <option value="weekly">Weekly</option>
+                                </select>
+                                <button class="btn btn-sm btn-primary" id="quickAddBtn"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
+                            </div>
+                        </div>
+
+                        <div class="glass-card span-col-4 widget-card">
+                            <div class="widget-header">
+                                <h3 class="widget-title"><i class="fa-solid fa-fire" aria-hidden="true"></i> Habit streaks</h3>
+                                <button class="text-btn" onclick="router.navigateTo('habits')">Manage</button>
+                            </div>
+                            <div class="habits-mini-list" id="dashboardHabitsList"></div>
+                        </div>
+
+<!-- How to use (user guide) -->
+                        <div class="glass-card span-col-12 how-to-use-card" id="howToUseCard">
+                            <div class="widget-header how-to-header">
+                                <h3><i class="fa-solid fa-map" aria-hidden="true"></i> How to use Flowora</h3>
+                                <button type="button" class="text-btn" id="toggleHowToUseBtn" aria-expanded="false">Show guide</button>
+                            </div>
+                            <div class="how-to-body is-collapsed" id="howToUseBody">
+                                <div class="how-to-grid">
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">1</div>
+                                        <h4>Add today’s tasks</h4>
+                                        <p>Type in <strong>Quick Add</strong> below and press Enter. Mark done with the checkbox. Filter with All / Active / Done.</p>
+                                    </div>
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">2</div>
+                                        <h4>Plan your day</h4>
+                                        <p>Open <strong>Planner</strong> for Morning / Afternoon / Evening blocks. Drag priorities into the right time slot.</p>
+                                    </div>
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">3</div>
+                                        <h4>Build habits & goals</h4>
+                                        <p>Use <strong>Habits</strong> for daily streaks and <strong>Goals</strong> for longer targets. Update progress as you go.</p>
+                                    </div>
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">4</div>
+                                        <h4>Use the Focus Timer</h4>
+                                        <p>Start a <strong>Focus Session</strong> for 25-minute deep work. Take breaks, then come back to the dashboard.</p>
+                                    </div>
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">5</div>
+                                        <h4>Ask the AI coach</h4>
+                                        <p>In <strong>AI Coach</strong> try: “Add task: Finish report”, “Morning brief”, or “Analyze workspace”.</p>
+                                    </div>
+                                    <div class="how-to-step">
+                                        <div class="how-to-num">6</div>
+                                        <h4>Install & backup</h4>
+                                        <p>Install the app from the browser menu (Add to Home Screen). In <strong>Settings</strong>, Export backup so your data stays safe.</p>
+                                    </div>
+                                </div>
+                                <p class="how-to-tip"><i class="fa-solid fa-keyboard"></i> Tip: Press <kbd>Ctrl</kbd> + <kbd>K</kbd> (or <kbd>⌘</kbd> + <kbd>K</kbd>) to open quick search anywhere.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                                 
+                <!-- Planner View -->
+                <section id="view-planner" class="view-section">
+                    <div class="view-header-actions">
+                        <h2>Daily Planner</h2>
+                        <button class="btn btn-primary" id="openNewTaskModal"><i class="fa-solid fa-plus" aria-hidden="true"></i> New Task</button>
+                    </div>
+                    <div class="planner-grid">
+                        <div class="glass-card planner-column">
+                            <h3><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Morning (06:00 - 12:00)</h3>
+                            <div class="planner-dropzone" data-time="morning"></div>
+                        </div>
+                        <div class="glass-card planner-column">
+                            <h3><i class="fa-solid fa-sun" aria-hidden="true"></i> Afternoon (12:00 - 18:00)</h3>
+                            <div class="planner-dropzone" data-time="afternoon"></div>
+                        </div>
+                        <div class="glass-card planner-column">
+                            <h3><i class="fa-solid fa-moon" aria-hidden="true"></i> Evening (18:00 - 22:00)</h3>
+                            <div class="planner-dropzone" data-time="evening"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pomodoro Timer View -->
+                <section id="view-pomodoro" class="view-section">
+                    <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: center; padding: 40px;">
+                        <h2><i class="fa-solid fa-stopwatch" aria-hidden="true"></i> Focus Timer</h2>
+                        <p class="date-subtitle">Boost deep work sessions with timed intervals</p>
+                        <div id="pomodoroDisplay" style="font-size: 4rem; font-weight: 700; margin: 30px 0; color: var(--primary);">25:00</div>
+                        <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 20px;">
+                            <button class="btn btn-primary" id="pomodoroStartBtn"><i class="fa-solid fa-play" aria-hidden="true"></i> Start</button>
+                            <button class="btn btn-secondary" id="pomodoroPauseBtn"><i class="fa-solid fa-pause" aria-hidden="true"></i> Pause</button>
+                            <button class="btn btn-secondary" id="pomodoroResetBtn"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Reset</button>
+                        </div>
+                    </div>
+                </section>
+                                 
+                <!-- Calendar View -->
+                <section id="view-calendar" class="view-section">
+                    <div class="glass-card">
+                        <h2>Calendar & Schedule View</h2>
+                        <p>Browse your monthly schedule with smart color coding.</p>
+                        <div class="calendar-placeholder-grid" id="calendarGrid"></div>
+                    </div>
+                </section>
+                                 
+                <!-- Goals View with Standardized Skeleton Loader -->
+                <section id="view-goals" class="view-section">
+                    <div class="glass-card skeleton-container" style="padding: 30px;" aria-busy="true" aria-label="Loading Goals">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div class="skeleton-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-main); animation: pulse 1.5s infinite;"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton-line" style="width: 150px; height: 18px; background: var(--bg-main); border-radius: 4px; margin-bottom: 6px; animation: pulse 1.5s infinite;"></div>
+                                <div class="skeleton-line" style="width: 250px; height: 12px; background: var(--bg-main); border-radius: 4px; animation: pulse 1.5s infinite;"></div>
+                            </div>
+                        </div>
+                        <div class="skeleton-block" style="height: 180px; background: var(--bg-main); border-radius: var(--radius-md); animation: pulse 1.5s infinite; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.9rem;">
+                            <i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;" aria-hidden="true"></i> Loading goals…
+                        </div>
+                    </div>
+                </section>
+                                 
+                <!-- Habits View with Standardized Skeleton Loader -->
+                <section id="view-habits" class="view-section">
+                    <div class="glass-card skeleton-container" style="padding: 30px;" aria-busy="true" aria-label="Loading Habits">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-main); animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            <div style="flex: 1;">
+                                <div style="width: 150px; height: 18px; background: var(--bg-main); border-radius: 4px; margin-bottom: 6px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                                <div style="width: 250px; height: 12px; background: var(--bg-main); border-radius: 4px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div style="height: 180px; background: var(--bg-main); border-radius: var(--radius-md); animation: pulse 1.5s infinite; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.9rem;">
+                            <i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;" aria-hidden="true"></i> Loading habits…
+                        </div>
+                    </div>
+                </section>
+                                 
+                <!-- Analytics View with Standardized Skeleton Loader -->
+                <section id="view-analytics" class="view-section">
+                    <div class="glass-card skeleton-container" style="padding: 30px;" aria-busy="true" aria-label="Loading Analytics">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-main); animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            <div style="flex: 1;">
+                                <div style="width: 150px; height: 18px; background: var(--bg-main); border-radius: 4px; margin-bottom: 6px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                                <div style="width: 250px; height: 12px; background: var(--bg-main); border-radius: 4px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div style="height: 180px; background: var(--bg-main); border-radius: var(--radius-md); animation: pulse 1.5s infinite; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.9rem;">
+                            <i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;" aria-hidden="true"></i> Loading progress…
+                        </div>
+                    </div>
+                </section>
+                                 
+                <!-- AI Hub View with Standardized Skeleton Loader -->
+                <section id="view-ai-hub" class="view-section">
+                    <div class="glass-card skeleton-container" style="padding: 30px;" aria-busy="true" aria-label="Loading AI Hub">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-main); animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            <div style="flex: 1;">
+                                <div style="width: 150px; height: 18px; background: var(--bg-main); border-radius: 4px; margin-bottom: 6px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                                <div style="width: 250px; height: 12px; background: var(--bg-main); border-radius: 4px; animation: pulse 1.5s infinite;" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div style="height: 180px; background: var(--bg-main); border-radius: var(--radius-md); animation: pulse 1.5s infinite; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.9rem;">
+                            <i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;" aria-hidden="true"></i> Loading AI Coach…
+                        </div>
+                    </div>
+                </section>
+                                 
+                <!-- Daily / Weekly Review -->
+                <section id="view-review" class="view-section" aria-labelledby="reviewHeading">
+                    <div id="reviewRoot" class="review-root"></div>
+                </section>
+
+                <!-- Settings View -->
+
+                <section id="view-settings" class="view-section"></section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Command Palette Modal (Ctrl + K) -->
+    <div class="modal-overlay" id="commandPaletteModal" style="display: none; align-items: flex-start; padding-top: 10vh;" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="glass-card modal-container" style="max-width: 600px; width: 100%; padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-glass); padding-bottom: 12px; margin-bottom: 12px;">
+                <i class="fa-solid fa-magnifying-glass" style="color: var(--primary);" aria-hidden="true"></i>
+                <input type="text" id="commandPaletteInput" placeholder="Search tasks, goals, habits…" style="flex: 1; border: none; background: transparent; color: var(--text-primary); font-size: 1rem; outline: none;" aria-label="Command Search Input">
+                <button class="icon-btn" id="closeCommandPalette" style="background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--text-secondary);" aria-label="Close Command Palette"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div id="commandPaletteResults" style="display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto;" role="listbox">
+                <div id="commandPaletteDynamicResults" style="display: none; flex-direction: column; gap: 6px;"></div>
+                <div id="commandPaletteStaticGroup" style="display: flex; flex-direction: column; gap: 6px;">
+                <div class="command-item" data-action="router" data-target="dashboard" style="padding: 10px 12px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px;" role="option" tabindex="0">
+                    <i class="fa-solid fa-house-chimney" style="color: var(--primary);" aria-hidden="true"></i>
+                    <span>Go to Home</span>
+                </div>
+                <div class="command-item" data-action="router" data-target="planner" style="padding: 10px 12px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px;" role="option" tabindex="0">
+                    <i class="fa-solid fa-calendar-days" style="color: var(--primary);" aria-hidden="true"></i>
+                    <span>Go to Planner</span>
+                </div>
+                <div class="command-item" data-action="router" data-target="pomodoro" style="padding: 10px 12px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px;" role="option" tabindex="0">
+                    <i class="fa-solid fa-stopwatch" style="color: var(--primary);" aria-hidden="true"></i>
+                    <span>Open Focus Timer</span>
+                </div>
+                <div class="command-item" data-action="router" data-target="ai-hub" style="padding: 10px 12px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px;" role="option" tabindex="0">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary);" aria-hidden="true"></i>
+                    <span>Open AI Coach</span>
+                </div>
+                <div class="command-item" data-action="router" data-target="settings" style="padding: 10px 12px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 10px;" role="option" tabindex="0">
+                    <i class="fa-solid fa-gear" style="color: var(--primary);" aria-hidden="true"></i>
+                    <span>Open Settings & API Configuration</span>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+    <!-- Floating Action Button -->
+    <button class="fab-btn" id="fabBtn" title="Quick Actions" onclick="router.navigateTo('planner')" aria-label="Quick Actions">
+        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+    </button>
+         
+    <!-- Reusable Modal Layer -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="glass-card modal-container" id="modalContainer">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="icon-btn" id="modalCloseBtn" aria-label="Close Modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+         
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+         
+    <!-- Classic scripts — works with Live Server / any static host (no npm required) -->
+    <script src="assets/js/storage.js?v=11"></script>
+    <script src="assets/js/utils.js?v=11"></script>
+    <script src="assets/js/theme.js?v=11"></script>
+    <script src="assets/js/router.js?v=11"></script>
+    <script src="assets/js/components.js?v=11"></script>
+    <script src="assets/js/dashboard.js?v=11"></script>
+    <script src="assets/js/planner.js?v=11"></script>
+    <script src="assets/js/pomodoro.js?v=11"></script>
+    <script src="assets/js/calendar.js?v=11"></script>
+    <script src="assets/js/goals.js?v=11"></script>
+    <script src="assets/js/habits.js?v=11"></script>
+    <script src="assets/js/analytics.js?v=11"></script>
+    <script src="assets/js/settings.js?v=11"></script>
+    <script src="assets/js/ai-hub.js?v=11"></script>
+    <script src="assets/js/app.js?v=11"></script>
+    <script src="assets/js/ux-polish.js?v=11"></script>
+    <script src="assets/js/onboarding.js?v=11"></script>
+    <script src="assets/js/review.js?v=11"></script>
+    <script src="assets/js/reminders.js?v=11"></script>
+    <script src="assets/js/templates.js?v=11"></script>
+    <script src="assets/js/shortcuts.js?v=11"></script>
+</body>
+</html>

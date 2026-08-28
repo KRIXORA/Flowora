@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Prefer canonical homepage
+Sitemap: https://flowora-ai.vercel.app/sitemap.xml

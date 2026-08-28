@@ -1,0 +1,43 @@
+Flowora — START HERE
+========================
+
+1) Run (pick one)
+   - VS Code → Live Server on index.html
+   - OR:  python3 -m http.server 8080
+          then open http://localhost:8080
+
+2) Do NOT open index.html with file:// double-click.
+
+3) Works offline (no account):
+   Home, Planner, Calendar, Goals, Habits, Focus Timer,
+   Review, Templates, Progress, AI Coach (local), Settings,
+   Dark mode, Export/Import backup, Install as PWA.
+
+4) Useful tips
+   - Press ? for keyboard shortcuts
+   - Settings → Reminders → Allow notifications
+   - Settings → Export backup regularly
+   - Sidebar bottom: Built by KRIXORA (portfolio link)
+
+5) Optional later
+   - npm install && npm run dev  (local live-reload dev server only —
+     doesn't build/bundle anything)
+   - There's no cloud sync / login built in currently — the app is
+     fully offline
+
+6) If something looks wrong
+   - Hard refresh: Ctrl+Shift+R
+   - Phone: clear site data / cache after deploy
+   - F12 → Console for errors
+
+Live demo: https://flowora-ai.vercel.app
+Portfolio: https://krixora-portfolio.vercel.app
+
+
+7) GitHub / browser not showing new features?
+   - Upload the FULL folder (especially assets/js/*.js + assets/css/premium.css)
+   - Required new files: onboarding.js, review.js, reminders.js, templates.js,
+     shortcuts.js, ux-polish.js, premium.css, brand/krixora-mark.svg
+   - After deploy: open site → F12 → Application → Service Workers → Unregister
+   - Then hard refresh (Ctrl+Shift+R) or clear site data
+   - Confirm Network tab loads assets/js/review.js with status 200

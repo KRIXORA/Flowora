@@ -1,0 +1,48 @@
+{
+  "id": "/",
+  "name": "Flowora - Productivity & Life Planner",
+  "short_name": "Flowora",
+  "description": "An AI-powered productivity hub, life planner, and personal dashboard. Build habits, track goals, and stay productive.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "background_color": "#2B4592",
+  "theme_color": "#2B4592",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/maskable-icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "./#dashboard",
+      "description": "Open Home dashboard"
+    },
+    {
+      "name": "Planner",
+      "url": "./#planner",
+      "description": "Open daily planner"
+    }
+  ]
+}

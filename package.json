@@ -1,0 +1,26 @@
+{
+  "name": "flowora",
+  "version": "4.0.0",
+  "description": "Flowora \u2014 Productivity & Life Planner PWA",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "mobile:hint": "echo \"This is the flat static build \u2014 no build step needed. Just run: npx cap add android|ios (requires Capacitor CLI)\""
+  },
+  "keywords": [
+    "productivity",
+    "pwa",
+    "planner",
+    "habits",
+    "goals",
+    "pomodoro"
+  ],
+  "author": "KRIXORA",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
